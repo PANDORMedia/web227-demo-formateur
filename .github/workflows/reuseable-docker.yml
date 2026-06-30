@@ -13,7 +13,7 @@ on:
             dockerfile:
                 required: false
                 type: string
-                default: '.'
+                default: 'Dockerfile'
         secrets:
             registery-username:
                 required: false
@@ -44,10 +44,9 @@ jobs:
             - uses: docker/build-push-action@v5
               with:
                 context: ${{ inputs.context }}
-                file: ${{ inputs.context}}/${{inputs.dockerfile}}
+                file: ${{ inputs.context }}/${{ inputs.dockerfile }}
                 push: false
                 tags: ${{ steps.meta.outputs.tags }}
                 labels: ${{ steps.meta.outputs.labels }}
                 cache-from: type=gha
                 cache-to: type=gha,mode=max
-                
