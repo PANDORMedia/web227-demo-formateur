@@ -22,7 +22,7 @@ jobs:
         
     build:
         needs: test
-        uses: ./.github/workflows/resuable-docker.yml
+        uses: ./.github/workflows/reuseable-docker.yml
         with:
             image-name: devops-app
             context: ./app
