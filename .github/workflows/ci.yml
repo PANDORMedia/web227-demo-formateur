@@ -30,7 +30,7 @@ jobs:
               with:
                 context: ./app
                 push: false
-                tags: demo-app:{{ github.sha }}
+                tags: demo-app:${{ github.sha }}
     security:
         needs: build
         runs-on: ubuntu-latest
