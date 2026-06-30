@@ -26,6 +26,18 @@ jobs:
         with:
             image-name: devops-app
             context: ./app
+
+    install-terraform: 
+        needs: build
+        runs-on: ubuntu-latests
+        name: a job to install terraform
+        steps:
+            - uses: actions/checkout@v4
+            - id: terraform
+              uses: PANDORMedia/setup-tools@latest
+              with: 
+                install-terraform: 'true'
+                
     security:
         needs: build
         runs-on: ubuntu-latest
