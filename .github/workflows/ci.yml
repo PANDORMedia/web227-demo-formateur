@@ -39,12 +39,16 @@ jobs:
             exit-code: 1
             format: table
 
-    deploy:
-        needs: [build, security]
-        if: github.ref == 'refs/heads/main'
+    deploy-staging:
+        needs: build
+        runs-on: ubuntu-latest
+        environment: staging
+        steps:
+        - run: echo "Deploying to staging..."
+
+    deploy-production:
+        needs: deploy-staging
         runs-on: ubuntu-latest
         environment: production
         steps:
-        - run: echo "Deploying ${{ github.sha }}..."
-        
-
+        - run: echo "Deploying to production..."
