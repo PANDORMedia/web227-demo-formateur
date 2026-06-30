@@ -40,7 +40,7 @@ jobs:
             format: table
 
     deploy-staging:
-        needs: build
+        needs: [build, security]
         runs-on: ubuntu-latest
         environment: staging
         steps:
